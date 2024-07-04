@@ -2,26 +2,27 @@
 
 {% block body %}
     <form class="form-create" action="{% url 'auction:create' %}" method="post">
+            {% csrf_token %}
             <h6 class="head">Create Listing</h6>
           <div class="mb-3">
             <label for="item" class="form-label">Item</label>
-            <input type="text" class="form-control" id="item">
+            <input name="item" type="text" class="form-control" id="item">
           </div>
           <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <input type="text" class="form-control" id="description">
+            <input name="description" type="text" class="form-control" id="description">
           </div>
           <div class="mb-3">
             <label for="bid" class="form-label">Starting Bid</label>
-            <input type="number" class="form-control" id="bid">
+            <input name="startBid" type="number" class="form-control" id="bid">
           </div>
           <div class="mb-3">
             <label for="img" class="form-label">Image Link</label>
-            <input type="url" class="form-control" id="img">
+            <input name="imgLink" type="url" class="form-control" id="img">
           </div>
           <div class="mb-3">
             <label for="category" class="form-label">Category</label>
-            <input type="text" class="form-control" id="category">
+            <input name="category" type="text" class="form-control" id="category">
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
     </form>

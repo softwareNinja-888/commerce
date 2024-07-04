@@ -3,5 +3,9 @@
 {% block body %}
     <h2>Active Listings</h2>
 
-    TODO
+    <ul>
+        {% for x in listings %}
+            <a href="{% url 'auction:listing' x.id %}"><li>{{x}}</li></a>
+        {% endfor %}
+    </ul>
 {% endblock %}
