@@ -1,0 +1,27 @@
+{% extends 'auctions/layout.html' %}
+{% load static %}
+{% block body %}
+    <h1 class="heading">{{listing.items}}</h1>
+
+    <div class="listCon">
+        <div class="listDescription">
+           Description {{listing.description}}
+        </div>
+      
+        <div class="listImg">
+            <img src="{% static 'auctions/c.jpg' %}" class="imgList" alt="" srcset="">
+        </div>
+        
+        <div class="infoList">
+            <div class="listCategory">
+                Category {{listing.category}}
+            </div>
+            <div class="listBid">
+                Price: R {{listing.bid}}
+            </div>
+            <form action="" method="post">
+                <input class="btn btn-outline-primary" type="submit" value="Add to wacthlist">
+            </form>
+        </div>
+    </div>
+{% endblock %}

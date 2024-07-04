@@ -25,7 +25,7 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("index"))
+            return HttpResponseRedirect(reverse("auction:index"))
         else:
             return render(request, "auctions/login.html", {
                 "message": "Invalid username and/or password."
@@ -36,7 +36,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse("index"))
+    return HttpResponseRedirect(reverse("auction:index"))
 
 
 def register(request):
@@ -73,10 +73,13 @@ def create(request):
         img = request.POST["imgLink"]
         category = request.POST["category"]
 
-        AuctionListing.objects.create(items=item,description=description,bid=bid,img=img,category=category)
+        AuctionListing.objects.create(items=item,description=description,bid=bid,img=img,category=category).save()
         return HttpResponseRedirect(reverse("auction:index"))
     
     return render(request, "auctions/create.html")
 
 def listing(request,item_id):
-    pass
+    
+    return render(request,'auctions/listing.html',{
+        "listing": AuctionListing.objects.get(pk=int(item_id))
+    })
